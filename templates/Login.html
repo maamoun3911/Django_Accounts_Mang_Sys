@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+    <div id="login-form" class="container-lg">
+
+        <div class="row justify-content-center">
+
+            <div class="col-sm-4 col-lg-6 text-center">
+                <div class="bg-secondary text-light">login view</div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            
+            <div class="col-sm-4 col-lg-6 text-center">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="login" name="login" / >
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock content %}
