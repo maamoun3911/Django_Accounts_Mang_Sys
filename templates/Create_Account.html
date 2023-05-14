@@ -3,9 +3,48 @@
 
 {% block content %}
 
-    <div id="register" class="container-lg">
+
+    <div class="container-lg">
+
+        <div class="row justify-content-center">
+
+            <div class="col-sm-4 col-lg-6">
+                <div class="bg-secondary text-light text-center"> register view </div>
+            </div>
+
+        </div>
 
         <form method="POST">
+            {% for field in form %}
+                {% csrf_token %}
+                <div class="row justify-content-center">
+
+                    <div class="col-sm-4 col-lg-6 text-center">
+                        {{field.label}}
+                    </div>
+
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-sm-4 col-lg-6 text-center">
+                        {{field}}
+                    </div>
+
+                </div>
+            {% endfor %}
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-lg-6 text-center">
+                    <button type="submit" class="btn btn-outline-primary">register</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    {% comment %} <div id="register" class="container-lg">
+
+        <form method="POST">
+
             {% csrf_token %}
             {% for field in form %}
                 <div class="row justify-content-center">
@@ -17,6 +56,7 @@
                     </div>
                 </div>
             {% endfor %}
+
             <div class="row justify-content-center">
                 <div class="col-sm-2 col-lg-3 text-center">
                     <input type="submit" name="register" value="register" / >
@@ -25,7 +65,7 @@
 
         </form>
 
-
     </div>
 
-{% endblock content %}
+{% endcomment %}
+{% endblock content %} 
