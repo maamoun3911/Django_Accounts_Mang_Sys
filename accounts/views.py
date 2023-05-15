@@ -63,9 +63,13 @@ def register(request):
     if request.method == "POST":
         form = UserRegisterationForm(request.POST)
         if form.is_valid():
+            # save without going to database 
             user = form.save(commit=False)
+            # deactivate user before activation email
             user.is_active = False
+            # after deactivating user we commit to database
             user.save()
+            # now we have user but notactivated, so we have to activate it via email activation
             activateEmail(request, user, form.cleaned_data.get("email"))
             # login(request, user)
             # messages.success(request, f"{user.first_name}, your account has been created")
@@ -83,11 +87,14 @@ def login_view(request):
     }
     if request.method == "POST":
         form = UserLoginForm(request=request, data=request.POST)
+        # if the form achieve email and password recognized principles
         if form.is_valid():
+            # scanning username ond password in the database
             user = authenticate(
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password']
             )
+            # if they are in the database
             if user:
                 login(request, user)
                 messages.success(request, f"{user.username} Logged in Successfully")

@@ -3,43 +3,31 @@
 
 {% block content %}
 
+    <section id='contact'>
+        <div class="container-sm">
 
-    <div class="container-lg">
-
-        <div class="row justify-content-center">
-
-            <div class="col-sm-4 col-lg-6">
+            <div class="text-center">
                 <div class="bg-secondary text-light text-center"> register view </div>
             </div>
 
-        </div>
-
-        <form method="POST">
-            {% for field in form %}
-                {% csrf_token %}
-                <div class="row justify-content-center">
-
-                    <div class="col-sm-4 col-lg-6 text-center">
-                        {{field.label}}
-                    </div>
-
+            <div class="row justify-content-center my-5 text-center bg-dark text-light">
+                
+                <div class="col-sm-4 col-lg-6">
+                    <form method="POST">
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label class="form-label">{{ field.label }}</label>
+                                <div>{{ field }}</div>
+                            </div>
+                        {% endfor %}
+                        <p></p>
+                        <input type="submit" class="btn btn-outline-warning" value="register" / >
+                    </form>
                 </div>
 
-                <div class="row justify-content-center">
-
-                    <div class="col-sm-4 col-lg-6 text-center">
-                        {{field}}
-                    </div>
-
-                </div>
-            {% endfor %}
-            <div class="row justify-content-center">
-                <div class="col-sm-4 col-lg-6 text-center">
-                    <button type="submit" class="btn btn-outline-primary">register</button>
-                </div>
             </div>
-        </form>
 
-    </div>
-    
+        </div>
+    </section>
+
 {% endblock content %} 
