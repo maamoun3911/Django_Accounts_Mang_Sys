@@ -1,6 +1,6 @@
 <h2> Django Accounts Mangement System </h2>
 
-<p>A small app with big influence, it's a full Account manger via django that you can use it in you project</p>
+<p>A small app with big influence, it's a full Django Accounts Manger which you can use in your project</p>
 
 <li>
   app feature:
