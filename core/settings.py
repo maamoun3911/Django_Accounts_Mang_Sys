@@ -129,14 +129,16 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
 
 
-# Emailing settings
-# Too important
+# 1]'django.core.mail.backends.smtp.EmailBackend'
+#   - default configuration that uses SMTP server for email delivery.
+#   - Defined email settings will be passed as matching arguments to EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_FROM = 'mang.acc.sys@gmail.com'
 EMAIL_HOST_USER = 'mang.acc.sys@gmail.com'
 EMAIL_HOST_PASSWORD = 'sktpowdqmkhpgoof'
 EMAIL_PORT = 587
+# the way to encrypt the mail and protect your user account by setting the variable EMAIL_USE_TLS or EMAIL_USE_SSL.
 EMAIL_USE_TLS = True
-
-PASSWORD_RESET_TIMEOUT = 340000
+# after how many seconds the token(token session) will expired and you need to create newone via tokens.py inner function
+PASSWORD_RESET_TIMEOUT = 14400

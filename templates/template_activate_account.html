@@ -1,7 +1,9 @@
 {% autoescape off %}
-Hi {{ user.username }},
 
-Please click on the link below to confirm your registration:
+    Hi {{ user.username }},
+        
+    Please click on the link below to confirm your registration:
+        {% comment %} here we sent encoded user_id and the token via link {% endcomment %}
+    {{ protocol }}://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
 
-{{ protocol }}://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
 {% endautoescape %}
