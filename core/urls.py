@@ -19,6 +19,7 @@ from django.urls import path, include
 from .views import home
 
 urlpatterns = [
+    path('captcha/', include('captcha.urls')),
     path('admin/', admin.site.urls),
     path("", home, name="home"),
     path("Accounts/", include('accounts.urls', namespace="accounts")),

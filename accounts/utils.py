@@ -36,8 +36,8 @@ def activateEmail(request, user: CustomUser, to_email: str):
     email = EmailMessage(mail_subject, message, to=[to_email])
     
     if email.send():
-        messages.success(request, f"{user.username}please go to your email {to_email} click on recieved activation link to \
-            confirm and complete the registration. \
+        messages.success(request, f"{user.username} please go to your email {to_email} click on recieved \
+            activation link to confirm and complete the registration. \
             Note: Check your spam.")
     else:
         messages.error(request, f"problem sending email to {to_email}, try again later.")

@@ -3,7 +3,7 @@ from django import forms
 # we use get_user_model when we need to call the user abstracted model
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+from captcha.fields import CaptchaField
 
 class UserRegisterationForm(UserCreationForm):
     
@@ -11,6 +11,7 @@ class UserRegisterationForm(UserCreationForm):
         model = get_user_model()
         fields = ["first_name", "last_name", "username",
                 "email", "password1", "password2"]
+    captcha = CaptchaField()
 
     # just to clean email before sending to database
     def save(self, commit=True):
@@ -20,17 +21,20 @@ class UserRegisterationForm(UserCreationForm):
             user.save()
         return user
 
+
 class UserLoginForm(AuthenticationForm):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
-        
+    
     username = forms.CharField(
         label="Username or Email",
         widget=forms.TextInput(attrs={
-            'class':"form-control", "placeholder": "Username or Email"}),
-        )
+            'class': "form-control", "placeholder": "Username or Email"
+        })
+    )
     
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={"class":"form-control", "placeholder":"Password"}
-                )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs=
+            {'class': "form-control", "placeholder":"Password"}
             )
+        )
