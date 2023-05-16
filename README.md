@@ -1,4 +1,4 @@
-<h2> Django_Accounts_Mang_Sys </h2>
+<h2> Django Accounts Mangement System </h2>
 
 <p>A small app with big influence, it's a full Account manger via django that you can use it in you project</p>
 
@@ -11,3 +11,4 @@
 </li>
 
 <p>The app use tokens</p>
+<p>you need to change email settings in settings.py, especially if you want to put this app into production<p/>
